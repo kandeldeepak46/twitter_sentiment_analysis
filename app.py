@@ -1,5 +1,6 @@
 import re
 import tweepy
+from loguru import logger
 from tweepy import OAuthHandler
 from textblob import TextBlob
 
@@ -76,4 +77,4 @@ class TwitterClient(object):
 
         except tweepy.TweepError as e:
             # print error (if any)
-            print("Error : " + str(e))
+            logger.info("Error : " + str(e))
