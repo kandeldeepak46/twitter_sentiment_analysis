@@ -6,14 +6,14 @@ from textblob import TextBlob
 
 
 class TwitterClient(object):
-    """ 
-	Generic Twitter Class for sentiment analysis. 
-	"""
+    """
+    Generic Twitter Class for sentiment analysis.
+    """
 
     def __init__(self):
-        """ 
-		Class constructor or initialization method. 
-		"""
+        """
+        Class constructor or initialization method.
+        """
         # keys and tokens from the Twitter Dev Console
         consumer_key = "o74hsg2mOi4M7YWN3NloQf6W8"
         consumer_secret = "8biZKnNd9MO0Ds5eCxpDrEB72z9GFwrXmx1LnQBibxu7Fd7RDz"
@@ -30,10 +30,10 @@ class TwitterClient(object):
 
     def clean_tweet(self, tweet):
 
-        """ 
-            Utility function to clean tweet text by removing links, special characters 
-            using simple regex statements. 
-            """
+        """
+        Utility function to clean tweet text by removing links, special characters
+        using simple regex statements.
+        """
         return " ".join(
             re.sub(
                 "(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet
@@ -41,10 +41,10 @@ class TwitterClient(object):
         )
 
     def get_tweet_sentiment(self, tweet):
-        """ 
-		Utility function to classify sentiment of passed tweet 
-		using textblob's sentiment method 
-		"""
+        """
+        Utility function to classify sentiment of passed tweet
+        using textblob's sentiment method
+        """
 
         analysis = TextBlob(self.clean_tweet(tweet))
         if analysis.sentiment.polarity > 0:
@@ -55,9 +55,9 @@ class TwitterClient(object):
             return "negative"
 
     def get_tweets(self, query, count=10):
-        """ 
-		Main function to fetch tweets and parse them. 
-		"""
+        """
+        Main function to fetch tweets and parse them.
+        """
         tweets = []
 
         try:
